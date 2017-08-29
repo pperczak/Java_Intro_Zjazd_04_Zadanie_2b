@@ -9,7 +9,7 @@ public class Main {
         Scanner scanner = new Scanner(System.in);
         System.out.print("Podaj rozmiar szachownicy: ");
         int rozmiar = scanner.nextInt();
-        if (rozmiar <2) {
+        if (rozmiar < 2) {
             System.out.println("Podano zly rozmiar tablicy");
             return;
         }
@@ -23,44 +23,44 @@ public class Main {
 
         System.out.print("Podaj wspolrzedne X figury: ");
         int kolumna = scanner.nextInt();
-        if (kolumna <1 || kolumna > rozmiar) {
+        if (kolumna < 0 || kolumna >= rozmiar) {
             System.out.println("Niepoprawna wspolrzedna X!");
             return;
         }
 
         System.out.print("Podaj wspolrzedne Y figury: ");
         int wiersz = scanner.nextInt();
-        if (wiersz <1 || wiersz > rozmiar) {
+        if (wiersz < 0 || wiersz >= rozmiar) {
             System.out.println("Niepoprawna wspolrzedna Y!");
             return;
         }
 
         System.out.print("Podaj wspolrzedne X docelowe: ");
         int kolumna_target = scanner.nextInt();
-        if (kolumna_target <1 || kolumna_target > rozmiar) {
+        if (kolumna_target < 0 || kolumna_target >= rozmiar) {
             System.out.println("Niepoprawna wspolrzedna X pola docelowego!");
             return;
         }
 
         System.out.print("Podaj wspolrzedne Y docelowe: ");
         int wiersz_target = scanner.nextInt();
-        if (wiersz_target <1 || wiersz_target > rozmiar) {
+        if (wiersz_target < 0 || wiersz_target >= rozmiar) {
             System.out.println("Niepoprawna wspolrzedna Y pola docelowego!");
             return;
         }
 
-        switch (typFigury)  {
+        switch (typFigury) {
             case 0:
-                ile_ruchow_wieza(kolumna,wiersz,kolumna_target,wiersz_target);
+                ile_ruchow_wieza(kolumna, wiersz, kolumna_target, wiersz_target);
                 break;
             case 1:
-                ile_ruchow_goniec(kolumna,wiersz,kolumna_target,wiersz_target,rozmiar);
+                ile_ruchow_goniec(kolumna, wiersz, kolumna_target, wiersz_target, rozmiar);
                 break;
             case 2:
 
                 break;
             case 3:
-                ile_ruchow_krol(kolumna,wiersz,kolumna_target,wiersz_target);
+                ile_ruchow_krol(kolumna, wiersz, kolumna_target, wiersz_target);
                 break;
             default:
                 System.out.println("Niepoprawny wybór");
@@ -73,40 +73,41 @@ public class Main {
         int kolumna_diff = kolumna_docelowa - kolumna;
         int wiersz_diff = wiersz_docelowy - wiersz;
         if (Math.abs(kolumna_diff) > Math.abs(wiersz_diff)) {
-            System.out.println("Figura król potrzebuje: "+ Math.abs(kolumna_diff) +" ruchow do celu");
+            System.out.println("Figura król potrzebuje: " + Math.abs(kolumna_diff) + " ruchow do celu");
             return;
-        }else if (Math.abs(kolumna_diff) <= Math.abs(wiersz_diff) ) {
-            System.out.println("Figura król potrzebuje: "+ Math.abs(wiersz_diff) +" ruchow do celu");
+        } else if (Math.abs(kolumna_diff) <= Math.abs(wiersz_diff)) {
+            System.out.println("Figura król potrzebuje: " + Math.abs(wiersz_diff) + " ruchow do celu");
             return;
-        }else System.out.println("Something is not yes (z cyklu Angielski z Tuskiem)");
+        } else System.out.println("Something is not yes (z cyklu Angielski z Tuskiem)");
 
     }
+
     public static void ile_ruchow_wieza(int kolumna, int wiersz, int kolumna_docelowa, int wiersz_docelowy) {
         if (kolumna == kolumna_docelowa || wiersz == wiersz_docelowy) {
             System.out.println("Figura wieża potrzebuje 1 ruchu do celu");
-        }else if (kolumna == kolumna_docelowa && wiersz == wiersz_docelowy) {
+        } else if (kolumna == kolumna_docelowa && wiersz == wiersz_docelowy) {
             System.out.println("Figura już jest w miejscu docelowym");
-        }else {
+        } else {
             System.out.println("Figura wieża potrzebuje 2 ruchów do celu");
         }
     }
 
     public static void ile_ruchow_goniec(int kolumna, int wiersz, int kolumna_docelowa, int wiersz_docelowy, int rozmiar) {
-        if ((kolumna+wiersz+kolumna_docelowa+wiersz_docelowy) %2 != 0 ) {
-            System.out.println("Niestety goniec z pozycji w "+wiersz+" k "+kolumna+" nigdy nie trafi na w "+wiersz_docelowy+" k "+kolumna_docelowa);
+        if ((kolumna + wiersz + kolumna_docelowa + wiersz_docelowy) % 2 != 0) {
+            System.out.println("Niestety goniec z pozycji w " + wiersz + " k " + kolumna + " nigdy nie trafi na w " + wiersz_docelowy + " k " + kolumna_docelowa);
 
-        }else if (sprawdzSkosy(kolumna,wiersz,kolumna_docelowa,wiersz_docelowy,rozmiar) == true){
+        } else if (sprawdzSkosy(kolumna, wiersz, kolumna_docelowa, wiersz_docelowy, rozmiar) == true) {
             System.out.println("Pole docelowe w zasięgu 1 ruchu");
-        }else {
+        } else {
             System.out.println("Pole docelowe dostępne w zasięgu 2 ruchów");
         }
     }
 
-    public static boolean sprawdzSkosy (int kolumna, int wiersz, int kolumna_docelowa, int wiersz_docelowy, int rozmiar) {
+    public static boolean sprawdzSkosy(int kolumna, int wiersz, int kolumna_docelowa, int wiersz_docelowy, int rozmiar) {
         int i = 1;
 
         //skos lewo dół
-        while ((wiersz - i)>= 0 && (kolumna - i) >= 0 ) {
+        while ((wiersz - i) >= 0 && (kolumna - i) >= 0) {
             int w = wiersz - i;
             int k = kolumna - i;
             if (w == wiersz_docelowy && k == kolumna_docelowa) {
@@ -114,9 +115,9 @@ public class Main {
             }
             i++;
         }
-        i=1;
+        i = 1;
         //skos prawo góra
-        while ((wiersz + i)< rozmiar && (kolumna + i) < rozmiar ) {
+        while ((wiersz + i) < rozmiar && (kolumna + i) < rozmiar) {
             int w = wiersz + i;
             int k = kolumna + i;
             if (w == wiersz_docelowy && k == kolumna_docelowa) {
@@ -124,9 +125,9 @@ public class Main {
             }
             i++;
         }
-        i=1;
+        i = 1;
         //skos prawo dół
-        while ((wiersz - i)>= 0 && (kolumna + i) < rozmiar ) {
+        while ((wiersz - i) >= 0 && (kolumna + i) < rozmiar) {
             int w = wiersz - i;
             int k = kolumna + i;
             if (w == wiersz_docelowy && k == kolumna_docelowa) {
@@ -134,9 +135,9 @@ public class Main {
             }
             i++;
         }
-        i=1;
+        i = 1;
         //skos lewo góra
-        while ((wiersz + i) < rozmiar && (kolumna - i) >= 0 ) {
+        while ((wiersz + i) < rozmiar && (kolumna - i) >= 0) {
             int w = wiersz + i;
             int k = kolumna - i;
             if (w == wiersz_docelowy && k == kolumna_docelowa) {
