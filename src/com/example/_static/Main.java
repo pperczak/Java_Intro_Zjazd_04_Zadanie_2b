@@ -13,7 +13,7 @@ public class Main {
             System.out.println("Podano zly rozmiar tablicy");
             return;
         }
-        System.out.print("Podaj typ figury: 0-wieza, 1-laufer, 2-hetman, 3-król: ");
+        System.out.print("Podaj typ figury: 0-wieza, 1-goniec, 2-hetman, 3-król: ");
         int typFigury = scanner.nextInt();
 
         if (typFigury < 0 || typFigury > 4) {
@@ -57,7 +57,7 @@ public class Main {
 
                 break;
             case 2:
-
+                ile_ruchow_goniec(kolumna,wiersz,kolumna_target,wiersz_target,rozmiar);
                 break;
             case 3:
                 ile_ruchow_krol(kolumna,wiersz,kolumna_target,wiersz_target);
