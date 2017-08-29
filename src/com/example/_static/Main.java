@@ -90,4 +90,58 @@ public class Main {
             System.out.println("Figura wieża potrzebuje 2 ruchów do celu");
         }
     }
+
+    public static void ile_ruchow_goniec(int kolumna, int wiersz, int kolumna_docelowa, int wiersz_docelowy) {
+        if ((kolumna+wiersz+kolumna_docelowa+wiersz_docelowy) %2 != 0 ) {
+            System.out.println("Niestety goniec z pozycji w "+wiersz+" k "+kolumna+" nigdy nie trafi na w "+wiersz_docelowy+" k "+kolumna_docelowa);
+
+        }else {
+
+        }
+    }
+
+    public static boolean sprawdzSkosy (int wiersz, int kolumna, int wiersz_docelowy, int kolumna_docelowa, int rozmiar) {
+        int i = 1;
+
+        //skos lewo dół
+        while ((wiersz - i)>= 0 && (kolumna - i) >= 0 ) {
+            int w = wiersz - i;
+            int k = kolumna - i;
+            if (w == wiersz_docelowy && k == kolumna_docelowa) {
+                return true;
+            }
+            i++;
+        }
+        i=1;
+        //skos prawo góra
+        while ((wiersz + i)< rozmiar && (kolumna + i) < rozmiar ) {
+            int w = wiersz + i;
+            int k = kolumna + i;
+            if (w == wiersz_docelowy && k == kolumna_docelowa) {
+                return true;
+            }
+            i++;
+        }
+        i=1;
+        //skos prawo dół
+        while ((wiersz - i)>= 0 && (kolumna + i) < rozmiar ) {
+            int w = wiersz - i;
+            int k = kolumna + i;
+            if (w == wiersz_docelowy && k == kolumna_docelowa) {
+                return true;
+            }
+            i++;
+        }
+        i=1;
+        //skos lewo góra
+        while ((wiersz + i) < rozmiar && (kolumna - i) >= 0 ) {
+            int w = wiersz + i;
+            int k = kolumna - i;
+            if (w == wiersz_docelowy && k == kolumna_docelowa) {
+                return true;
+            }
+            i++;
+        }
+        return false;
+    }
 }
