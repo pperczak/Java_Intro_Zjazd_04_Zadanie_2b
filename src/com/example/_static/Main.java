@@ -63,7 +63,7 @@ public class Main {
                 ile_ruchow_krol(kolumna, wiersz, kolumna_target, wiersz_target);
                 break;
             default:
-                System.out.println("Niepoprawny wybór");
+                System.out.println("Niepoprawny wybór ale do tego nie dopuscimy");
                 return;
         }
     }
@@ -78,7 +78,6 @@ public class Main {
             System.out.println("Figura król potrzebuje: " + Math.abs(wiersz_diff) + " ruchow do celu");
             return;
         } else System.out.println("Something is not yes (z cyklu Angielski z Tuskiem)");
-
     }
 
     public static void ile_ruchow_wieza(int kolumna, int wiersz, int kolumna_docelowa, int wiersz_docelowy) {
