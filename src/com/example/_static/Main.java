@@ -57,7 +57,7 @@ public class Main {
                 ile_ruchow_goniec(kolumna, wiersz, kolumna_target, wiersz_target, rozmiar);
                 break;
             case 2:
-
+                ile_ruchow_hetman(kolumna, wiersz, kolumna_target, wiersz_target, rozmiar);
                 break;
             case 3:
                 ile_ruchow_krol(kolumna, wiersz, kolumna_target, wiersz_target);
@@ -101,6 +101,15 @@ public class Main {
         } else {
             System.out.println("Pole docelowe dostępne w zasięgu 2 ruchów");
         }
+    }
+
+    public static void ile_ruchow_hetman(int kolumna, int wiersz, int kolumna_docelowa, int wiersz_docelowy, int rozmiar) {
+        if (sprawdzSkosy(kolumna,wiersz,kolumna_docelowa,wiersz_docelowy,rozmiar) == true || kolumna == kolumna_docelowa || wiersz == wiersz_docelowy ) {
+            System.out.println("Pole docelowe w zasięgu 1 ruchu");
+        }else {
+            System.out.println("Pole docelowe w zasięgu 2 ruchów");
+        }
+
     }
 
     public static boolean sprawdzSkosy(int kolumna, int wiersz, int kolumna_docelowa, int wiersz_docelowy, int rozmiar) {
