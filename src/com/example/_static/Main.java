@@ -54,10 +54,10 @@ public class Main {
                 ile_ruchow_wieza(kolumna,wiersz,kolumna_target,wiersz_target);
                 break;
             case 1:
-
+                ile_ruchow_goniec(kolumna,wiersz,kolumna_target,wiersz_target,rozmiar);
                 break;
             case 2:
-                ile_ruchow_goniec(kolumna,wiersz,kolumna_target,wiersz_target,rozmiar);
+
                 break;
             case 3:
                 ile_ruchow_krol(kolumna,wiersz,kolumna_target,wiersz_target);
