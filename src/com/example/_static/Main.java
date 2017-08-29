@@ -91,16 +91,18 @@ public class Main {
         }
     }
 
-    public static void ile_ruchow_goniec(int kolumna, int wiersz, int kolumna_docelowa, int wiersz_docelowy) {
+    public static void ile_ruchow_goniec(int kolumna, int wiersz, int kolumna_docelowa, int wiersz_docelowy, int rozmiar) {
         if ((kolumna+wiersz+kolumna_docelowa+wiersz_docelowy) %2 != 0 ) {
             System.out.println("Niestety goniec z pozycji w "+wiersz+" k "+kolumna+" nigdy nie trafi na w "+wiersz_docelowy+" k "+kolumna_docelowa);
 
+        }else if (sprawdzSkosy(kolumna,wiersz,kolumna_docelowa,wiersz_docelowy,rozmiar) == true){
+            System.out.println("Pole docelowe w zasięgu 1 ruchu");
         }else {
-
+            System.out.println("Pole docelowe dostępne w zasięgu 2 ruchów");
         }
     }
 
-    public static boolean sprawdzSkosy (int wiersz, int kolumna, int wiersz_docelowy, int kolumna_docelowa, int rozmiar) {
+    public static boolean sprawdzSkosy (int kolumna, int wiersz, int kolumna_docelowa, int wiersz_docelowy, int rozmiar) {
         int i = 1;
 
         //skos lewo dół
